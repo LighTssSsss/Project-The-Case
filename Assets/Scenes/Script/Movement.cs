@@ -6,14 +6,10 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    //Transform cam;
+    public float velocidadMovimiento = 10f;
     public Joystick JoystickMove;
-    //public Joystick JoystickGiro;
     public Transform jugador;
     public CharacterController control;
-
-    public float velocidadMovimiento = 10f;
-    public float velociadDeGiro = 0.2f;
     float x;
     float z;
     Vector3 movimiento;
