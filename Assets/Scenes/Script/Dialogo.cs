@@ -24,8 +24,9 @@ public class Dialogo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        AreaDisponible dis = GameObject.FindObjectOfType<AreaDisponible>();
 
-        if (Input.GetMouseButtonDown(0) && ToqueAlFantasma())
+        if (Input.GetMouseButtonDown(0) && ToqueAlFantasma() && dis.disponible == true)
         {
             dialogos.SetActive(true);
 
@@ -65,6 +66,24 @@ public class Dialogo : MonoBehaviour
                 dialogo.text = LineasDialogo[index];
             }
             */
+
+            
+
+
+        }
+
+       
+
+        else if (dis.disponible == false)
+        {
+            dialogos.SetActive(false);
+            StopAllCoroutines();
+        }
+
+        if (dis.disponible == false && index < 3)
+        {
+            index = 0;
+            dialogos.SetActive(false);
         }
     }
 
@@ -100,7 +119,7 @@ public class Dialogo : MonoBehaviour
 
     void siguienteLinea()
     {
-        if (index < LineasDialogo.Length - 1)
+        if (index < LineasDialogo.Length - 1 )
         {
             index++;
             primeralinea = false;

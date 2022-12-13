@@ -7,7 +7,7 @@ public class Recoleccion : MonoBehaviour
     [SerializeField] private LayerMask objeto1;
     [SerializeField] private LayerMask objeto2;
     [SerializeField] private LayerMask objeto3;
-
+    [SerializeField] private bool nuevoObjeto = false;
     [SerializeField] private List<GameObject> cantidad = new List<GameObject>();
 
     [SerializeField] private bool primer, segundo, tercero;
@@ -25,13 +25,15 @@ public class Recoleccion : MonoBehaviour
 
     public void Objetos()
     {
-        if (Input.GetMouseButtonDown(0) && ToqueObjeto1())
+        Modos estados = GetComponent<Modos>();
+        if (Input.GetMouseButtonDown(0) && ToqueObjeto1() && estados.soyNormal == true)
         {
             cantidad[0].SetActive(false);
             primer = true;
+            nuevoObjeto = true;
         }
 
-        else if (Input.GetMouseButtonDown(0) && ToqueObjeto2())
+        else if (Input.GetMouseButtonDown(0) && ToqueObjeto2() && estados.soyNormal == true)
         {
             cantidad[1].SetActive(false);
             segundo = true;
@@ -66,5 +68,17 @@ public class Recoleccion : MonoBehaviour
 
         }
         return aparece2;
+    }
+
+
+
+    public bool MuestrameNuevoObjeto()
+    {
+        return this.nuevoObjeto;
+    }
+
+    public void CambiameNuevoObjeto(bool cambiamelo)
+    {
+        this.nuevoObjeto = cambiamelo;
     }
 }
