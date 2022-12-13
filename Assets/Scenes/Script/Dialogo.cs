@@ -28,6 +28,7 @@ public class Dialogo : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && ToqueAlFantasma() && dis.disponible == true)
         {
+            print("hola");
             dialogos.SetActive(true);
 
 
@@ -84,6 +85,7 @@ public class Dialogo : MonoBehaviour
         {
             index = 0;
             dialogos.SetActive(false);
+            print("chao");
         }
     }
 
@@ -130,6 +132,20 @@ public class Dialogo : MonoBehaviour
         else
         {
             dialogos.SetActive(false);
+        }
+    }
+
+
+    void Test()
+    {
+        //if en area ontriggerstay
+        {
+            //if apreto boton raycast
+            {
+                //abrir cajita dialogo
+
+            }
+
         }
     }
 }
