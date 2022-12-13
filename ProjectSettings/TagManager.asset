@@ -5,17 +5,18 @@ TagManager:
   serializedVersion: 2
   tags:
   - Area
+  - Fantasma
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Fantasma
   - Water
   - UI
   - Objeto1
-  - 
-  - 
-  - 
+  - Nota1
+  - Nota2
+  - Nota3
   - 
   - 
   - 
