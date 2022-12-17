@@ -12,13 +12,16 @@ public class Dialogo : MonoBehaviour
     private int index;
     [SerializeField] private LayerMask fantasma;
     [SerializeField] private bool primeralinea = true;
+    public GameObject botonContinuar;
+
+    public bool AparecenHabilidades;
     // Start is called before the first frame update
 
     void Start()
     {
         dialogos.SetActive(false);
         dialogo.text = string.Empty;
-        //ComienzaDialogo();
+        ComienzaDialogo();
     }
 
     // Update is called once per frame
@@ -26,67 +29,41 @@ public class Dialogo : MonoBehaviour
     {
         AreaDisponible dis = GameObject.FindObjectOfType<AreaDisponible>();
 
-        if (Input.GetMouseButtonDown(0) && ToqueAlFantasma() && dis.disponible == true)
+        ApareceDialogo();
+
+        if (dialogo.text == LineasDialogo[index])
         {
-            print("hola");
-            dialogos.SetActive(true);
-
-
-            if (dialogo.text == LineasDialogo[index])
-            {
-                siguienteLinea();
-                
-            }
-            else
-            {
-                StopAllCoroutines();
-                dialogo.text = LineasDialogo[index];
-            }
-
-            if(index == 5)
-            {
-                dialogos.SetActive(true);
-            }
-            
-            /*
-            if (dialogos.activeInHierarchy && primeralinea == true)
-            {
-                StartCoroutine(TipoLine());
-
-
-            }
-
-            else if (dialogo.text == LineasDialogo[index])
-            {
-                siguienteLinea();
-
-            }
-            else
-            {
-                StopAllCoroutines();
-                dialogo.text = LineasDialogo[index];
-            }
-            */
-
-            
-
+            botonContinuar.SetActive(true);
 
         }
+
+        if (dis.disponible == false)
+        {
+            dialogos.SetActive(false);
+           
+            //StopAllCoroutines();
+        }
+
+        if(index == 12)
+        {
+            AparecenHabilidades = true;
+        }
+        
+       else if (dis.disponible == false && index < 0) //Cuidado
+        {
+            index = 0;
+            print("Chaoo");
+        }
+
+        /*
+        else
+        {
+            StopAllCoroutines();
+            dialogo.text = LineasDialogo[index];
+        }*/
 
        
 
-        else if (dis.disponible == false)
-        {
-            dialogos.SetActive(false);
-            StopAllCoroutines();
-        }
-
-        if (dis.disponible == false && index < 3)
-        {
-            index = 0;
-            dialogos.SetActive(false);
-            print("chao");
-        }
     }
 
     bool ToqueAlFantasma()
@@ -119,8 +96,9 @@ public class Dialogo : MonoBehaviour
         }
     }
 
-    void siguienteLinea()
+    public void siguienteLinea()
     {
+        botonContinuar.SetActive(false);
         if (index < LineasDialogo.Length - 1 )
         {
             index++;
@@ -146,6 +124,25 @@ public class Dialogo : MonoBehaviour
 
             }
 
+        }
+    }
+
+    public void ApareceDialogo()
+    {
+        AreaDisponible dis = GameObject.FindObjectOfType<AreaDisponible>();
+        if (dis.disponible == true)
+        {
+            OnMouseDown();
+
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        AreaDisponible dis = GameObject.FindObjectOfType<AreaDisponible>();
+        if (ToqueAlFantasma() && dis.disponible == true)
+        {
+            dialogos.SetActive(true);          
         }
     }
 }

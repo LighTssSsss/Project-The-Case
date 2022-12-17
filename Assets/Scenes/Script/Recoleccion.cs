@@ -10,11 +10,18 @@ public class Recoleccion : MonoBehaviour
     [SerializeField] private bool nuevoObjeto = false;
     [SerializeField] private List<GameObject> cantidad = new List<GameObject>();
 
+    
+
+    [SerializeField] private List<GameObject> objetoInventario = new List<GameObject>();
+
     [SerializeField] private bool primer, segundo, tercero;
+
+    public bool alerta;
     // Start is called before the first frame update
     void Start()
     {
-
+        objetoInventario[0].SetActive(false);
+        objetoInventario[1].SetActive(false);
     }
 
     // Update is called once per frame
@@ -31,12 +38,17 @@ public class Recoleccion : MonoBehaviour
             cantidad[0].SetActive(false);
             primer = true;
             nuevoObjeto = true;
+            objetoInventario[0].SetActive(true);
+            alerta = true;
+            
         }
 
         else if (Input.GetMouseButtonDown(0) && ToqueObjeto2() && estados.soyNormal == true)
         {
             cantidad[1].SetActive(false);
             segundo = true;
+            objetoInventario[1].SetActive(true);
+            alerta = true;
         }
     }
 
