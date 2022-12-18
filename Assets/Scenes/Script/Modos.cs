@@ -26,6 +26,7 @@ public class Modos : MonoBehaviour
     public void BotonFantasma()
     {
         Debug.Log("Soy Fantasma buuuuu");
+        gameObject.layer = 14;
         fantasma.SetActive(true);
         humano.SetActive(false);
         soyNormal = false;
@@ -35,9 +36,27 @@ public class Modos : MonoBehaviour
     public void BotonCuerpo()
     {
         fantasma.SetActive(false);
+        gameObject.layer = 13;
         humano.SetActive(true);
         Debug.Log("Soy humano");
         soyNormal = true;
         soyFantasma = false;
+    }
+
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if(soyFantasma == true && collision.gameObject.tag == "casas" && collision.gameObject.tag == "objetos" && collision.gameObject.tag == "Objeto1")
+        {
+            print("Boton fantasma desactivado");
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (soyFantasma == true && collision.gameObject.tag == "casas" && collision.gameObject.tag == "objetos" && collision.gameObject.tag == "Objeto1")
+        {
+            print("Boton fantasma activado");
+        }
     }
 }
