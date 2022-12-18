@@ -8,6 +8,10 @@ TagManager:
   - Fantasma
   - Casas
   - Cosas
+  - Objeto1
+  - Objeto2
+  - Objeto3
+  - Area2
   layers:
   - Default
   - TransparentFX
@@ -19,9 +23,9 @@ TagManager:
   - Nota1
   - Nota2
   - Nota3
-  - 
-  - 
-  - 
+  - Nota4
+  - Diario
+  - Guardian
   - 
   - 
   - 

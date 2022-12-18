@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PrenderObjeto : MonoBehaviour
 {
-    [SerializeField] private bool puedoTomarlo;
+    public bool puedoTomarlo;
     [SerializeField] private GameObject particulas;
     
     // Start is called before the first frame update

@@ -46,8 +46,13 @@ public class Dialogo : MonoBehaviour
 
         if(index == 12)
         {
+            ObjetivoDialogo objD = GameObject.FindObjectOfType<ObjetivoDialogo>();
             AparecenHabilidades = true;
+            objD.estadoDialogo = true;
+
         }
+
+        
         
        else if (dis.disponible == false && index < 0) //Cuidado
         {
