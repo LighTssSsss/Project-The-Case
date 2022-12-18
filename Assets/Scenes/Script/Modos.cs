@@ -46,7 +46,7 @@ public class Modos : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if(soyFantasma == true && collision.gameObject.tag == "casas" && collision.gameObject.tag == "objetos" && collision.gameObject.tag == "Objeto1")
+        if(soyFantasma == true && collision.gameObject.tag == "casas" || collision.gameObject.tag == "objetos" || collision.gameObject.tag == "Objeto1")
         {
             print("Boton fantasma desactivado");
         }
@@ -54,7 +54,7 @@ public class Modos : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (soyFantasma == true && collision.gameObject.tag == "casas" && collision.gameObject.tag == "objetos" && collision.gameObject.tag == "Objeto1")
+        if (soyFantasma == true && collision.gameObject.tag == "casas" || collision.gameObject.tag == "objetos" || collision.gameObject.tag == "Objeto1")
         {
             print("Boton fantasma activado");
         }
