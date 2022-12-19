@@ -11,6 +11,9 @@ public class Interaccion : MonoBehaviour
 
     [SerializeField] private bool prendio1, prendio2, prendio3, prendio4;
 
+    [SerializeField] private GameObject[] botones;
+
+    
     int[] ValorDado = { -1, -1, -1, -1 }; //Valor dado por el jugador
     int[] ValorEstablecido = { 0, 1, 2, 3}; // Valor Ganador
     int index = 0;
@@ -33,6 +36,11 @@ public class Interaccion : MonoBehaviour
             ComprobacionArreglo();
             //Botones bo = GameObject.Find
             prendio1 = true;
+            if(prendio1 == true && prendio3 == true || prendio4 == true)
+            {
+                prendio3 = false;
+                prendio4 = false;
+            }
             print("Boton 1 se presiono");
 
         }
@@ -81,6 +89,7 @@ public class Interaccion : MonoBehaviour
         {
             prendio = true;
             hit.collider.gameObject.GetComponent<Botones>().EncenderLuz(true);
+            Debug.Log("Luz" + hit.collider.gameObject.name);
         }
         return prendio;
     }
@@ -96,6 +105,7 @@ public class Interaccion : MonoBehaviour
         {
             prendio2 = true;
             hit.collider.gameObject.GetComponent<Botones>().EncenderLuz(true);
+            Debug.Log("Luz" + hit.collider.gameObject.name);
         }
         return prendio2;
     }
@@ -111,6 +121,7 @@ public class Interaccion : MonoBehaviour
         {
             prendio3 = true;
             hit.collider.gameObject.GetComponent<Botones>().EncenderLuz(true);
+            Debug.Log("Luz" + hit.collider.gameObject.name);
         }
         return prendio3;
     }
@@ -126,6 +137,7 @@ public class Interaccion : MonoBehaviour
         {
             prendio4 = true;
             hit.collider.gameObject.GetComponent<Botones>().EncenderLuz(true);
+            Debug.Log("Luz" + hit.collider.gameObject.name);
         }
         return prendio4;
     }
@@ -146,7 +158,11 @@ public class Interaccion : MonoBehaviour
 
         else
         {
-            //Botones ga = GameObject.FindObjectOfType<Botones>();
+
+
+            //Botones ga = ga.GetComponent<Botones>().EncenderLuz(false);
+
+            ApagarLuces();
 
             ValorDado[0] = -1;
             ValorDado[1] = -1;
@@ -158,18 +174,34 @@ public class Interaccion : MonoBehaviour
             prendio3 = false;
             prendio4 = false;
 
-            
+            index = 0;
             print("No es igual");
-            
+           
         }
        
     }
 
     public void AbreLaCaja()
     {
+        //botones[0] && botones[1]...
+        
         if(prendio1 == true && prendio2 == true && prendio3 == true && prendio4 == true)
         {
             Objeto[0].SetActive(false);
+        }
+
+        /*
+        if(botones[0] && botones[1] && botones[2] && botones[3]) 
+        {
+            Objeto[0].SetActive(false);
+        } */
+    }
+
+    public void ApagarLuces()
+    {
+        for (int i = 0; i < botones.Length; i++)
+        {
+            botones[i].GetComponent<Botones>().EncenderLuz(false);
         }
     }
 }
