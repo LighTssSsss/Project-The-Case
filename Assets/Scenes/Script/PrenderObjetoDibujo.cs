@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PrenderObjeto : MonoBehaviour
+public class PrenderObjetoDibujo : MonoBehaviour
 {
     public bool puedoTomarlo;
     [SerializeField] private GameObject ImagenTomar;
@@ -16,27 +16,27 @@ public class PrenderObjeto : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
         //Modos modoPlayer = GetComponent<Modos>();
         Modos modPlayer = playerEstado.GetComponent<Modos>();
-
-        if(other.gameObject.tag == "Player" && modPlayer.soyFantasma == false)
+        Recoleccion recolecc = playerEstado.GetComponent<Recoleccion>();
+        if (other.gameObject.tag == "Player" && modPlayer.soyFantasma == false && recolecc.comienzaPuzzle == true)
         {
             Debug.Log("Prendio el objeto");
             ImagenTomar.SetActive(true);
             puedoTomarlo = true;
-           
+
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         //Modos modoPlayer = GetComponent<Modos>();
-        if (other.gameObject.tag == "Player" )
+        if (other.gameObject.tag == "Player")
         {
             Debug.Log("Ya no prende el objeto");
             ImagenTomar.SetActive(false);

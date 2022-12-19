@@ -11,6 +11,7 @@ public class Recoleccion : MonoBehaviour
     [SerializeField] private LayerMask objeto5;
     [SerializeField] private bool nuevoObjeto = false;
     [SerializeField] private List<GameObject> cantidad = new List<GameObject>();
+    public bool comienzaPuzzle;
 
     public bool puedo,puedo2,puedo3,puedo4;
     
@@ -61,6 +62,7 @@ public class Recoleccion : MonoBehaviour
             tercero = true;
             nuevo3 = true;
             alerta = true;
+            comienzaPuzzle = true;
         }
 
         else if (Input.GetMouseButtonDown(0) && ToqueObjeto4() && estados.soyNormal == true )
