@@ -15,6 +15,8 @@ public class Dialogo : MonoBehaviour
     public GameObject botonContinuar;
 
     public bool AparecenHabilidades;
+
+    public GameObject boton1, boton2;
     // Start is called before the first frame update
 
     void Start()
@@ -22,6 +24,9 @@ public class Dialogo : MonoBehaviour
         dialogos.SetActive(false);
         dialogo.text = string.Empty;
         ComienzaDialogo();
+        boton1.SetActive(false);
+        boton2.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -67,7 +72,11 @@ public class Dialogo : MonoBehaviour
             dialogo.text = LineasDialogo[index];
         }*/
 
-       
+       if(AparecenHabilidades == true)
+        {
+            boton1.SetActive(true);
+            boton2.SetActive(true);
+        }
 
     }
 
