@@ -8,9 +8,11 @@ public class Player : MonoBehaviour
     public Image barraDeVida;
 
     [SerializeField] private float vidaJugadorMaxima;
-    [SerializeField] private float vidaJugador;
+    public float vidaJugador;
     public float tiempo;
     public GameObject estados;
+    public Animator animacion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +43,7 @@ public class Player : MonoBehaviour
             tiempo += Time.deltaTime;
             if(tiempo >= 2)
             {
-                vidaJugador -= 5;
+                vidaJugador -= 20;
                 tiempo = 0;
             }
             
@@ -60,14 +62,17 @@ public class Player : MonoBehaviour
             }
             
         }
+
+        if(vidaJugador <= 0)
+        {
+            ReproduceLaAnimacionMuerte("Standing React Death Forward");
+        }
     }
 
-    void RecolectoObjetos()
+    
+    public void ReproduceLaAnimacionMuerte(string nombreAni)
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            
-        }
+        animacion.Play(nombreAni);
     }
 
    

@@ -20,7 +20,13 @@ public class Modos : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Player vid = GetComponent<Player>();
+        if (vid.vidaJugador <= 0)
+        {
+            print("Se muere");
+            humano.SetActive(true);
+            fantasma.SetActive(false);
+        }
     }
 
     public void BotonFantasma()
@@ -42,6 +48,8 @@ public class Modos : MonoBehaviour
         soyNormal = true;
         soyFantasma = false;
     }
+
+
 
     
     private void OnCollisionEnter(Collision collision)
