@@ -22,13 +22,13 @@ public class PlayerControlCamera : MonoBehaviour
             {
                 case "Mouse X":
                     if (Input.touchCount > 0)
-                        return Input.touches[0].deltaPosition.x / sensibilidad;
+                        return Input.touches[0].deltaPosition.x / sensibilidad * -1;
                     else
                         return Input.GetAxis(axisName);
 
                 case "Mouse Y":
                     if (Input.touchCount > 0)
-                        return Input.touches[0].deltaPosition.y / sensibilidad;
+                        return Input.touches[0].deltaPosition.y / sensibilidad * -1;
                     else
                         return Input.GetAxis(axisName);
 
