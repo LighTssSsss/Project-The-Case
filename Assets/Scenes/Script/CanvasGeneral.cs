@@ -10,6 +10,7 @@ public class CanvasGeneral : MonoBehaviour
     //public GameObject casillaUno;
 
     public List<GameObject> casillas = new List<GameObject>();
+    public GameObject objetivoDialogos;
     // Start is called before the first frame update
     void Start()
     {
@@ -67,11 +68,13 @@ public class CanvasGeneral : MonoBehaviour
     
     public void BotonCasillaUno()
     {
+        ObjetivoDialogo objs = objetivoDialogos.GetComponent<ObjetivoDialogo>();
         Recoleccion nueva = alertar.GetComponent<Recoleccion>();
-        //inventario.SetActive(false);
+        inventario.SetActive(false);
         //casillaUno.SetActive(true);
         nueva.nuevo1 = false;
         casillas[0].SetActive(true);
+        objs.estadoDialogo = false;
         Objetivo obj = GameObject.FindObjectOfType<Objetivo>();
         obj.estado1 = true;
     }
@@ -79,6 +82,7 @@ public class CanvasGeneral : MonoBehaviour
     public void BotonCasillaDos()
     {
         Recoleccion nueva = alertar.GetComponent<Recoleccion>();
+        inventario.SetActive(false);
         //inventario.SetActive(false);
         //casillaUno.SetActive(true);
         nueva.nuevo2 = false;
@@ -91,6 +95,7 @@ public class CanvasGeneral : MonoBehaviour
     public void BotonCasillaTres()
     {
         Recoleccion nueva = alertar.GetComponent<Recoleccion>();
+        inventario.SetActive(false);
         //inventario.SetActive(false);
         //casillaUno.SetActive(true);
         nueva.nuevo3 = false;
@@ -102,6 +107,7 @@ public class CanvasGeneral : MonoBehaviour
     public void BotonCasillaCuatro()
     {
         Recoleccion nueva = alertar.GetComponent<Recoleccion>();
+        inventario.SetActive(false);
         //inventario.SetActive(false);
         //casillaUno.SetActive(true);
         nueva.nuevo4 = false;
@@ -113,6 +119,7 @@ public class CanvasGeneral : MonoBehaviour
     public void BotonCasillaCinco()
     {
         Recoleccion nueva = alertar.GetComponent<Recoleccion>();
+        inventario.SetActive(false);
         //inventario.SetActive(false);
         //casillaUno.SetActive(true);
         nueva.nuevo5 = false;

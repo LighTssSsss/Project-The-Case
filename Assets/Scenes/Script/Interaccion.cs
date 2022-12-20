@@ -9,18 +9,18 @@ public class Interaccion : MonoBehaviour
     [SerializeField] private LayerMask Boton3;
     [SerializeField] private LayerMask Boton4;
 
-    [SerializeField] private bool prendio1, prendio2, prendio3, prendio4;
+    [SerializeField] private bool prendio1, prendio2, prendio3, prendio4, completado;
 
     [SerializeField] private GameObject[] botones;
-
+   // [SerializeField] private GameObject jugador;
     
     int[] ValorDado = { -1, -1, -1, -1 }; //Valor dado por el jugador
     int[] ValorEstablecido = { 0, 1, 2, 3}; // Valor Ganador
     int index = 0;
 
     [SerializeField] private List<GameObject> Objeto = new List<GameObject>();
-    
 
+    [SerializeField] private bool presiono1, presiono2, presiono3, presiono4;
     private void Start()
     {
         //cajaPuerta.SetActive(true);
@@ -29,38 +29,46 @@ public class Interaccion : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && ToqueBoton1())
+        //Modos estados = jugador.GetComponent<Modos>();
+        //PrenderObjeto prenOb = jugador.GetComponent<PrenderObjeto>();
+
+        if (Input.GetMouseButtonDown(0) && ToqueBoton1() && presiono1 == false )
         {
                     
             ValorDado[index] = 0;
             ComprobacionArreglo();
             //Botones bo = GameObject.Find
             prendio1 = true;
-            if(prendio1 == true && prendio3 == true || prendio4 == true)
+            if(prendio1 == true && prendio2 == false ||prendio3 == true || prendio4 == true)
             {
                 prendio3 = false;
                 prendio4 = false;
+                presiono2 = false;
+                presiono3 = false;
+                presiono4 = false;
             }
             print("Boton 1 se presiono");
-
+            presiono1 = true;
         }
 
-        else if (Input.GetMouseButtonDown(0) && ToqueBoton2() )
+        else if (Input.GetMouseButtonDown(0) && ToqueBoton2() && presiono2 == false )
         {
             
             ValorDado[index] = 1;
             ComprobacionArreglo();
             prendio2 = true;
             print("Boton 2 se presiono");
+            presiono2 = true;
         }
 
-        else if (Input.GetMouseButtonDown(0) && ToqueBoton3() )
+        else if (Input.GetMouseButtonDown(0) && ToqueBoton3() && presiono3 == false)
         {
            
             ValorDado[index] = 2;
             ComprobacionArreglo();
             prendio3 = true;
             print("Boton 3 se presiono");
+            presiono3 = true; //ver esto;
         }
 
         else if (Input.GetMouseButtonDown(0) && ToqueBoton4())
@@ -71,6 +79,7 @@ public class Interaccion : MonoBehaviour
             ComprobacionArreglo();
             prendio4 = true;
             print("Boton 4 se presiono");
+            
         }
 
         AbreLaCaja();
@@ -84,7 +93,7 @@ public class Interaccion : MonoBehaviour
         Vector3 newPos = Vector3.zero;
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+        //PrenderObjeto prenOb = jugador.GetComponent<PrenderObjeto>();
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, Boton1))
         {
             prendio = true;
@@ -100,7 +109,7 @@ public class Interaccion : MonoBehaviour
         Vector3 newPos = Vector3.zero;
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+        
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, Boton2))
         {
             prendio2 = true;
@@ -159,9 +168,28 @@ public class Interaccion : MonoBehaviour
         else
         {
 
+            if(completado == false)
+            {
+                ApagarLuces();
 
+                ValorDado[0] = -1;
+                ValorDado[1] = -1;
+                ValorDado[2] = -1;
+                ValorDado[3] = -1;
+
+                prendio1 = false;
+                prendio2 = false;
+                prendio3 = false;
+                prendio4 = false;
+                presiono1 = false;
+                presiono2 = false;
+                presiono3 = false;
+                presiono4 = false;
+                index = 0;
+                print("No es igual");
+            }
             //Botones ga = ga.GetComponent<Botones>().EncenderLuz(false);
-
+            /*
             ApagarLuces();
 
             ValorDado[0] = -1;
@@ -175,7 +203,7 @@ public class Interaccion : MonoBehaviour
             prendio4 = false;
 
             index = 0;
-            print("No es igual");
+            print("No es igual");*/
            
         }
        
@@ -187,6 +215,7 @@ public class Interaccion : MonoBehaviour
         
         if(prendio1 == true && prendio2 == true && prendio3 == true && prendio4 == true)
         {
+            completado = true;
             Objeto[0].SetActive(false);
         }
 
@@ -201,6 +230,7 @@ public class Interaccion : MonoBehaviour
     {
         for (int i = 0; i < botones.Length; i++)
         {
+
             botones[i].GetComponent<Botones>().EncenderLuz(false);
         }
     }
