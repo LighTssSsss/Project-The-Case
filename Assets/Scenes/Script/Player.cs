@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public float tiempo;
     public GameObject estados;
     public Animator animacion;
+    public CharacterController charc;
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +67,8 @@ public class Player : MonoBehaviour
         if(vidaJugador <= 0)
         {
             ReproduceLaAnimacionMuerte("Standing React Death Forward");
+            charc.enabled = false;
+            gameObject.layer = 13;
         }
     }
 

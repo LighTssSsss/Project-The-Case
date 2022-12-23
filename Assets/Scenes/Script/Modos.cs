@@ -8,6 +8,7 @@ public class Modos : MonoBehaviour
     public bool soyNormal;
     public GameObject fantasma;
     public GameObject humano;
+    public bool puedoCambiar;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,27 +27,36 @@ public class Modos : MonoBehaviour
             print("Se muere");
             humano.SetActive(true);
             fantasma.SetActive(false);
+            puedoCambiar = true;
         }
     }
 
     public void BotonFantasma()
     {
-        Debug.Log("Soy Fantasma buuuuu");
-        gameObject.layer = 14;
-        fantasma.SetActive(true);
-        humano.SetActive(false);
-        soyNormal = false;
-        soyFantasma = true;
+        if(puedoCambiar == false)
+        {
+            Debug.Log("Soy Fantasma buuuuu");
+            gameObject.layer = 14;
+            fantasma.SetActive(true);
+            humano.SetActive(false);
+            soyNormal = false;
+            soyFantasma = true;
+        }
+        
     }
 
     public void BotonCuerpo()
     {
-        fantasma.SetActive(false);
-        gameObject.layer = 13;
-        humano.SetActive(true);
-        Debug.Log("Soy humano");
-        soyNormal = true;
-        soyFantasma = false;
+        if(puedoCambiar == false)
+        {
+            fantasma.SetActive(false);
+            gameObject.layer = 13;
+            humano.SetActive(true);
+            Debug.Log("Soy humano");
+            soyNormal = true;
+            soyFantasma = false;
+        }
+        
     }
 
 

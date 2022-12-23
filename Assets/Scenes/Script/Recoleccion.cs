@@ -30,11 +30,13 @@ public class Recoleccion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Objetos();
+        //TomarObjetos();
     }
 
-    public void Objetos()
+    public void TomarObjetos()
     {
+        OnMouseDown();
+        /*
         Modos estados = GetComponent<Modos>();
         
 
@@ -79,7 +81,9 @@ public class Recoleccion : MonoBehaviour
             quinto = true;
             nuevo5 = true;
             alerta = true;
-        }
+        }*/
+
+
     }
 
     bool ToqueObjeto1()
@@ -215,6 +219,53 @@ public class Recoleccion : MonoBehaviour
         }
     }
 
+    private void OnMouseDown()
+    {
+        Modos estados = GetComponent<Modos>();
 
+
+        if (ToqueObjeto1() && estados.soyNormal == true && puedo == true)
+        {
+            cantidad[0].SetActive(false);
+            primer = true;
+            nuevoObjeto = true;
+            nuevo1 = true;
+            alerta = true;
+
+        }
+
+        else if (ToqueObjeto2() && estados.soyNormal == true && puedo2 == true)
+        {
+            cantidad[1].SetActive(false);
+            segundo = true;
+            nuevo2 = true;
+            alerta = true;
+        }
+
+        else if (ToqueObjeto3() && estados.soyNormal == true)
+        {
+            cantidad[2].SetActive(false);
+            tercero = true;
+            nuevo3 = true;
+            alerta = true;
+            comienzaPuzzle = true;
+        }
+
+        else if (ToqueObjeto4() && estados.soyNormal == true)
+        {
+            cantidad[3].SetActive(false);
+            cuarto = true;
+            nuevo4 = true;
+            alerta = true;
+        }
+
+        else if (ToqueObjeto5() && estados.soyNormal == true)
+        {
+            cantidad[4].SetActive(false);
+            quinto = true;
+            nuevo5 = true;
+            alerta = true;
+        }
+    }
 
 }

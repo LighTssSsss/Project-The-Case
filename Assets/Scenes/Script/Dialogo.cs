@@ -34,6 +34,7 @@ public class Dialogo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         AreaDisponible dis = GameObject.FindObjectOfType<AreaDisponible>();
 
         ApareceDialogo();
@@ -72,14 +73,63 @@ public class Dialogo : MonoBehaviour
         {
             StopAllCoroutines();
             dialogo.text = LineasDialogo[index];
-        }*/
+        } ****** aqui/
 
        if(AparecenHabilidades == true)
         {
             boton1.SetActive(true);
             boton2.SetActive(true);
+        }*/
+
+    }
+
+    public void DialogosChica()
+    {
+        AreaDisponible dis = GameObject.FindObjectOfType<AreaDisponible>();
+
+        ApareceDialogo();
+
+        if (dialogo.text == LineasDialogo[index])
+        {
+            botonContinuar.SetActive(true);
+
         }
 
+        if (dis.disponible == false)
+        {
+            dialogos.SetActive(false);
+            termino = true;
+            //StopAllCoroutines();
+        }
+
+        if (index == 15)
+        {
+            ObjetivoDialogo objD = GameObject.FindObjectOfType<ObjetivoDialogo>();
+
+            objD.estadoDialogo = true;
+
+        }
+
+
+
+        else if (dis.disponible == false && index < 0) //Cuidado
+        {
+            index = 0;
+            print("Chaoo");
+        }
+
+        /*
+        else
+        {
+            StopAllCoroutines();
+            dialogo.text = LineasDialogo[index];
+        }*/
+
+        if (AparecenHabilidades == true)
+        {
+            boton1.SetActive(true);
+            boton2.SetActive(true);
+        }
     }
 
     bool ToqueAlFantasma()

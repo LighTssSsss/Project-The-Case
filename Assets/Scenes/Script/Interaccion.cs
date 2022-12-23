@@ -32,6 +32,7 @@ public class Interaccion : MonoBehaviour
     }
     private void Update()
     {
+        /*
          Modos estados = jugador.GetComponent<Modos>();
          PrenderObjeto prenOb = puedo.GetComponent<PrenderObjeto>();
          PrenderObjeto  prenObj = puedo2.GetComponent<PrenderObjeto>();
@@ -89,8 +90,12 @@ public class Interaccion : MonoBehaviour
             
         }
 
-        AbreLaCaja();
+        AbreLaCaja();*/
         
+    }
+    public void PuzzleFinal()
+    {
+        OnMouseDown();
     }
 
 
@@ -265,5 +270,68 @@ public class Interaccion : MonoBehaviour
 
             botones[i].GetComponent<Botones>().EncenderLuz(false);
         }
+    }
+
+    private void OnMouseDown()
+    {
+        Modos estados = jugador.GetComponent<Modos>();
+        PrenderObjeto prenOb = puedo.GetComponent<PrenderObjeto>();
+        PrenderObjeto prenObj = puedo2.GetComponent<PrenderObjeto>();
+        PrenderObjeto prenObje = puedo3.GetComponent<PrenderObjeto>();
+        PrenderObjeto prenObjet = puedo4.GetComponent<PrenderObjeto>();
+
+
+        if ( ToqueBoton1() && presiono1 == false && prenOb.puedoTomarlo == true && estados.soyFantasma == false)
+        {
+
+            ValorDado[index] = 0;
+            ComprobacionArreglo();
+            //Botones bo = GameObject.Find
+            prendio1 = true;
+            if (prendio1 == true && prendio2 == false || prendio3 == true || prendio4 == true)
+            {
+                prendio3 = false;
+                prendio4 = false;
+                presiono2 = false;
+                presiono3 = false;
+                presiono4 = false;
+            }
+            print("Boton 1 se presiono");
+            presiono1 = true;
+        }
+
+        else if (ToqueBoton2() && presiono2 == false && prenObj.puedoTomarlo == true && estados.soyFantasma == false)
+        {
+
+            ValorDado[index] = 1;
+            ComprobacionArreglo();
+            prendio2 = true;
+            print("Boton 2 se presiono");
+            presiono2 = true;
+        }
+
+        else if ( ToqueBoton3() && presiono3 == false && prenObje.puedoTomarlo == true && estados.soyFantasma == false)
+        {
+
+            ValorDado[index] = 2;
+            ComprobacionArreglo();
+            prendio3 = true;
+            print("Boton 3 se presiono");
+            presiono3 = true; //ver esto;
+        }
+
+        else if (ToqueBoton4() && prenObjet.puedoTomarlo == true && estados.soyFantasma == false)
+        {
+
+
+            ValorDado[index] = 3;
+            ComprobacionArreglo();
+            prendio4 = true;
+            print("Boton 4 se presiono");
+
+        }
+
+        AbreLaCaja();
+
     }
 }
