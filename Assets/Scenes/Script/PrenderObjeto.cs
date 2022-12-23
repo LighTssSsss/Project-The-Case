@@ -19,6 +19,21 @@ public class PrenderObjeto : MonoBehaviour
         
     }
 
+
+    private void OnTriggerStay(Collider other)
+    {
+        //Modos modoPlayer = GetComponent<Modos>();
+        Modos modPlayer = playerEstado.GetComponent<Modos>();
+
+        if (other.gameObject.tag == "Player" && modPlayer.soyFantasma == false)
+        {
+            Debug.Log("Prendio el objeto");
+            ImagenTomar.SetActive(true);
+            puedoTomarlo = true;
+
+        }
+    }
+    /*
     private void OnTriggerEnter(Collider other)
     {
         //Modos modoPlayer = GetComponent<Modos>();
@@ -31,7 +46,7 @@ public class PrenderObjeto : MonoBehaviour
             puedoTomarlo = true;
            
         }
-    }
+    }*/
 
     private void OnTriggerExit(Collider other)
     {

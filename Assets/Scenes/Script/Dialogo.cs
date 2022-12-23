@@ -9,14 +9,16 @@ public class Dialogo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogo;
     public string[] LineasDialogo;
     public float velocidadTexto;
-    private int index;
+    public int index;
     [SerializeField] private LayerMask fantasma;
     [SerializeField] private bool primeralinea = true;
     public GameObject botonContinuar;
-
+    public bool hablo, cambio, cambiofinal;
     public bool AparecenHabilidades;
-
+    //public float tiempo;
     public GameObject boton1, boton2;
+    public List<GameObject> objetosCanvas;
+    public bool termino;
     // Start is called before the first frame update
 
     void Start()
@@ -45,19 +47,19 @@ public class Dialogo : MonoBehaviour
         if (dis.disponible == false)
         {
             dialogos.SetActive(false);
-           
+            termino = true;
             //StopAllCoroutines();
         }
 
-        if(index == 12)
+        if(index == 15)
         {
             ObjetivoDialogo objD = GameObject.FindObjectOfType<ObjetivoDialogo>();
-            AparecenHabilidades = true;
+      
             objD.estadoDialogo = true;
 
         }
 
-        
+       
         
        else if (dis.disponible == false && index < 0) //Cuidado
         {
@@ -112,6 +114,7 @@ public class Dialogo : MonoBehaviour
 
     public void siguienteLinea()
     {
+        AreaDisponible dis = GameObject.FindObjectOfType<AreaDisponible>();
         botonContinuar.SetActive(false);
         if (index < LineasDialogo.Length - 1 )
         {
@@ -124,6 +127,13 @@ public class Dialogo : MonoBehaviour
         else
         {
             dialogos.SetActive(false);
+            objetosCanvas[0].SetActive(true);
+            objetosCanvas[1].SetActive(true);
+            objetosCanvas[2].SetActive(true);
+            objetosCanvas[3].SetActive(true);
+            dis.aparece = false;
+            AparecenHabilidades = true;
+            termino = true;
         }
     }
 
@@ -147,7 +157,7 @@ public class Dialogo : MonoBehaviour
         if (dis.disponible == true)
         {
             OnMouseDown();
-
+            
         }
     }
 
@@ -156,6 +166,16 @@ public class Dialogo : MonoBehaviour
         AreaDisponible dis = GameObject.FindObjectOfType<AreaDisponible>();
         if (ToqueAlFantasma() && dis.disponible == true)
         {
+            hablo = true;
+            termino = false;
+            dis.aparece = true;
+            objetosCanvas[0].SetActive(false);
+            objetosCanvas[1].SetActive(false);
+            objetosCanvas[2].SetActive(false);
+            objetosCanvas[3].SetActive(false);
+            objetosCanvas[4].SetActive(false);
+            objetosCanvas[5].SetActive(true);
+            AparecenHabilidades = false;
             dialogos.SetActive(true);          
         }
     }

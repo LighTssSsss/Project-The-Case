@@ -12,8 +12,10 @@ public class Interaccion : MonoBehaviour
     [SerializeField] private bool prendio1, prendio2, prendio3, prendio4, completado;
 
     [SerializeField] private GameObject[] botones;
-   // [SerializeField] private GameObject jugador;
-    
+    [SerializeField] private GameObject puedo,puedo2,puedo3,puedo4;
+    [SerializeField] private GameObject jugador;
+    [SerializeField] private GameObject ApareceDiario;
+
     int[] ValorDado = { -1, -1, -1, -1 }; //Valor dado por el jugador
     int[] ValorEstablecido = { 0, 1, 2, 3}; // Valor Ganador
     int index = 0;
@@ -23,23 +25,28 @@ public class Interaccion : MonoBehaviour
     [SerializeField] private bool presiono1, presiono2, presiono3, presiono4;
     private void Start()
     {
+        ApareceDiario.SetActive(false);
         //cajaPuerta.SetActive(true);
         Objeto[0].SetActive(true);
        
     }
     private void Update()
     {
-        //Modos estados = jugador.GetComponent<Modos>();
-        //PrenderObjeto prenOb = jugador.GetComponent<PrenderObjeto>();
+         Modos estados = jugador.GetComponent<Modos>();
+         PrenderObjeto prenOb = puedo.GetComponent<PrenderObjeto>();
+         PrenderObjeto  prenObj = puedo2.GetComponent<PrenderObjeto>();
+         PrenderObjeto prenObje = puedo3.GetComponent<PrenderObjeto>();
+         PrenderObjeto prenObjet = puedo4.GetComponent<PrenderObjeto>();
 
-        if (Input.GetMouseButtonDown(0) && ToqueBoton1() && presiono1 == false )
+
+        if (Input.GetMouseButtonDown(0) && ToqueBoton1() && presiono1 == false && prenOb.puedoTomarlo == true && estados.soyFantasma == false)
         {
                     
             ValorDado[index] = 0;
             ComprobacionArreglo();
             //Botones bo = GameObject.Find
             prendio1 = true;
-            if(prendio1 == true && prendio2 == false ||prendio3 == true || prendio4 == true)
+            if(prendio1 == true && prendio2 == false ||prendio3 == true || prendio4 == true )
             {
                 prendio3 = false;
                 prendio4 = false;
@@ -51,7 +58,7 @@ public class Interaccion : MonoBehaviour
             presiono1 = true;
         }
 
-        else if (Input.GetMouseButtonDown(0) && ToqueBoton2() && presiono2 == false )
+        else if (Input.GetMouseButtonDown(0) && ToqueBoton2() && presiono2 == false && prenObj.puedoTomarlo == true && estados.soyFantasma == false) 
         {
             
             ValorDado[index] = 1;
@@ -61,7 +68,7 @@ public class Interaccion : MonoBehaviour
             presiono2 = true;
         }
 
-        else if (Input.GetMouseButtonDown(0) && ToqueBoton3() && presiono3 == false)
+        else if (Input.GetMouseButtonDown(0) && ToqueBoton3() && presiono3 == false && prenObje.puedoTomarlo == true && estados.soyFantasma == false)
         {
            
             ValorDado[index] = 2;
@@ -71,7 +78,7 @@ public class Interaccion : MonoBehaviour
             presiono3 = true; //ver esto;
         }
 
-        else if (Input.GetMouseButtonDown(0) && ToqueBoton4())
+        else if (Input.GetMouseButtonDown(0) && ToqueBoton4() && prenObjet.puedoTomarlo == true && estados.soyFantasma == false)
         {
 
             
@@ -89,6 +96,8 @@ public class Interaccion : MonoBehaviour
 
     bool ToqueBoton1()
     {
+        PrenderObjeto prenOb = puedo.GetComponent<PrenderObjeto>();
+        Modos estados = jugador.GetComponent<Modos>();
         bool prendio = false;
         Vector3 newPos = Vector3.zero;
         RaycastHit hit;
@@ -97,14 +106,20 @@ public class Interaccion : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, Boton1))
         {
             prendio = true;
-            hit.collider.gameObject.GetComponent<Botones>().EncenderLuz(true);
-            Debug.Log("Luz" + hit.collider.gameObject.name);
+            if (prenOb.puedoTomarlo == true && estados.soyFantasma == false)
+            {
+                hit.collider.gameObject.GetComponent<Botones>().EncenderLuz(true);
+                Debug.Log("Luz" + hit.collider.gameObject.name);
+            }
+                
         }
         return prendio;
     }
 
     bool ToqueBoton2()
     {
+        PrenderObjeto prenObj = puedo2.GetComponent<PrenderObjeto>();
+        Modos estados = jugador.GetComponent<Modos>();
         bool prendio2 = false;
         Vector3 newPos = Vector3.zero;
         RaycastHit hit;
@@ -113,14 +128,20 @@ public class Interaccion : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, Boton2))
         {
             prendio2 = true;
-            hit.collider.gameObject.GetComponent<Botones>().EncenderLuz(true);
-            Debug.Log("Luz" + hit.collider.gameObject.name);
+            if (prenObj.puedoTomarlo == true && estados.soyFantasma == false)
+            {
+                hit.collider.gameObject.GetComponent<Botones>().EncenderLuz(true);
+                Debug.Log("Luz" + hit.collider.gameObject.name);
+            }
+                
         }
         return prendio2;
     }
 
     bool ToqueBoton3()
     {
+        PrenderObjeto prenObje = puedo3.GetComponent<PrenderObjeto>();
+        Modos estados = jugador.GetComponent<Modos>();
         bool prendio3 = false;
         Vector3 newPos = Vector3.zero;
         RaycastHit hit;
@@ -129,14 +150,20 @@ public class Interaccion : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, Boton3))
         {
             prendio3 = true;
-            hit.collider.gameObject.GetComponent<Botones>().EncenderLuz(true);
-            Debug.Log("Luz" + hit.collider.gameObject.name);
+            if (prenObje.puedoTomarlo == true && estados.soyFantasma == false)
+            {
+                hit.collider.gameObject.GetComponent<Botones>().EncenderLuz(true);
+                Debug.Log("Luz" + hit.collider.gameObject.name);
+            }
+            
         }
         return prendio3;
     }
 
     bool ToqueBoton4()
     {
+        PrenderObjeto prenObjet = puedo4.GetComponent<PrenderObjeto>();
+        Modos estados = jugador.GetComponent<Modos>();
         bool prendio4 = false;
         Vector3 newPos = Vector3.zero;
         RaycastHit hit;
@@ -145,8 +172,12 @@ public class Interaccion : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, Boton4))
         {
             prendio4 = true;
-            hit.collider.gameObject.GetComponent<Botones>().EncenderLuz(true);
-            Debug.Log("Luz" + hit.collider.gameObject.name);
+            if (prenObjet.puedoTomarlo == true && estados.soyFantasma == false)
+            {
+                hit.collider.gameObject.GetComponent<Botones>().EncenderLuz(true);
+                Debug.Log("Luz" + hit.collider.gameObject.name);
+            }
+            
         }
         return prendio4;
     }
@@ -217,6 +248,7 @@ public class Interaccion : MonoBehaviour
         {
             completado = true;
             Objeto[0].SetActive(false);
+            ApareceDiario.SetActive(true);
         }
 
         /*
