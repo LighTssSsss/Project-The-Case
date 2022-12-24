@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class Lugar2 : MonoBehaviour
 {
+    private SonidoManager sonidoManager;
+
+    private void Awake()
+    {
+        sonidoManager = FindObjectOfType<SonidoManager>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Objeto2")
         {
+            sonidoManager.SeleccionarAudio(11, 0.8f);
             Puzzle1 puz = GameObject.FindObjectOfType<Puzzle1>();
             puz.lugar2 = true;
         }

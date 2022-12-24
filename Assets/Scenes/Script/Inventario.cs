@@ -14,7 +14,7 @@ public class Inventario : MonoBehaviour
         objetoInventario[1].SetActive(false);
         objetoInventario[2].SetActive(false);
         objetoInventario[3].SetActive(false);
-        objetoInventario[4].SetActive(false);
+        //objetoInventario[4].SetActive(false);
 
         nuevoObjetoAparecio[0].SetActive(false);
         nuevoObjetoAparecio[1].SetActive(false);

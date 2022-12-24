@@ -23,6 +23,14 @@ public class Interaccion : MonoBehaviour
     [SerializeField] private List<GameObject> Objeto = new List<GameObject>();
 
     [SerializeField] private bool presiono1, presiono2, presiono3, presiono4;
+
+    private SonidoManager sonidoManager;
+
+    private void Awake()
+    {
+        sonidoManager = FindObjectOfType<SonidoManager>();
+    }
+
     private void Start()
     {
         ApareceDiario.SetActive(false);
@@ -207,7 +215,7 @@ public class Interaccion : MonoBehaviour
             if(completado == false)
             {
                 ApagarLuces();
-
+                sonidoManager.SeleccionarAudio(9, 0.5f);
                 ValorDado[0] = -1;
                 ValorDado[1] = -1;
                 ValorDado[2] = -1;
@@ -283,7 +291,7 @@ public class Interaccion : MonoBehaviour
 
         if ( ToqueBoton1() && presiono1 == false && prenOb.puedoTomarlo == true && estados.soyFantasma == false)
         {
-
+            sonidoManager.SeleccionarAudio(8, 0.5f);
             ValorDado[index] = 0;
             ComprobacionArreglo();
             //Botones bo = GameObject.Find
@@ -302,7 +310,7 @@ public class Interaccion : MonoBehaviour
 
         else if (ToqueBoton2() && presiono2 == false && prenObj.puedoTomarlo == true && estados.soyFantasma == false)
         {
-
+            sonidoManager.SeleccionarAudio(8, 0.5f);
             ValorDado[index] = 1;
             ComprobacionArreglo();
             prendio2 = true;
@@ -312,7 +320,7 @@ public class Interaccion : MonoBehaviour
 
         else if ( ToqueBoton3() && presiono3 == false && prenObje.puedoTomarlo == true && estados.soyFantasma == false)
         {
-
+            sonidoManager.SeleccionarAudio(8, 0.5f);
             ValorDado[index] = 2;
             ComprobacionArreglo();
             prendio3 = true;
@@ -322,7 +330,7 @@ public class Interaccion : MonoBehaviour
 
         else if (ToqueBoton4() && prenObjet.puedoTomarlo == true && estados.soyFantasma == false)
         {
-
+            sonidoManager.SeleccionarAudio(8, 0.5f);
 
             ValorDado[index] = 3;
             ComprobacionArreglo();

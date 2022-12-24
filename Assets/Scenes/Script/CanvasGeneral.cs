@@ -11,15 +11,18 @@ public class CanvasGeneral : MonoBehaviour
     public GameManager estadoJugador;
     //public GameObject casillaUno;
     public GameObject pantallaMuerte;
-
+    public GameObject dialogo;
     public List<GameObject> casillas = new List<GameObject>();
     public GameObject objetivoDialogos;
     public List<GameObject> bloqueos = new List<GameObject>();
-
-
+    public GameObject imagenNegraCasilla;
+    private SonidoManager sonidoManager;
     public Animator Fade;
     //public Animator pantallaMuerte;
-
+    private void Awake()
+    {
+        sonidoManager = FindObjectOfType<SonidoManager>();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +30,7 @@ public class CanvasGeneral : MonoBehaviour
         inventario.SetActive(false);
         pantallaMuerte.SetActive(false);
         // casillaUno.SetActive(false);
-
+        dialogo.SetActive(false);
         casillas[0].SetActive(false);
         casillas[1].SetActive(false);
         casillas[2].SetActive(false);
@@ -37,6 +40,8 @@ public class CanvasGeneral : MonoBehaviour
         bloqueos[0].SetActive(true);
         bloqueos[1].SetActive(true);
         bloqueos[2].SetActive(true);
+        imagenNegraCasilla.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -69,6 +74,7 @@ public class CanvasGeneral : MonoBehaviour
     {
         if (estadoJugador.muerto == false)
         {
+            sonidoManager.SeleccionarAudio(3, 0.5f);
             Recoleccion alert = alertar.GetComponent<Recoleccion>();
             /* apaga
             iconoNuevoObjeto.SetActive(false);
@@ -96,6 +102,7 @@ public class CanvasGeneral : MonoBehaviour
 
     public void CerrarInventario()
     {
+        sonidoManager.SeleccionarAudio(1, 0.5f);
         inventario.SetActive(false);
     }
 
@@ -105,11 +112,13 @@ public class CanvasGeneral : MonoBehaviour
         ObjetivoDialogo objs = objetivoDialogos.GetComponent<ObjetivoDialogo>();
         if (estadoJugador.muerto == false)
         {
+            sonidoManager.SeleccionarAudio(4, 0.5f);
             Recoleccion nueva = alertar.GetComponent<Recoleccion>();
             inventario.SetActive(false);
             //casillaUno.SetActive(true);
             nueva.nuevo1 = false;
             casillas[0].SetActive(true);
+            imagenNegraCasilla.SetActive(true);
             objs.estadoDialogo = false;
             Objetivo obj = GameObject.FindObjectOfType<Objetivo>();
             obj.estado1 = true;
@@ -132,6 +141,8 @@ public class CanvasGeneral : MonoBehaviour
         if (estadoJugador.muerto == false)
         {
             Recoleccion nueva = alertar.GetComponent<Recoleccion>();
+            sonidoManager.SeleccionarAudio(4, 0.5f);
+            imagenNegraCasilla.SetActive(true);
             inventario.SetActive(false);
             //inventario.SetActive(false);
             //casillaUno.SetActive(true);
@@ -158,6 +169,8 @@ public class CanvasGeneral : MonoBehaviour
         if (estadoJugador.muerto == false)
         {
             Recoleccion nueva = alertar.GetComponent<Recoleccion>();
+            sonidoManager.SeleccionarAudio(4, 0.5f);
+            imagenNegraCasilla.SetActive(true);
             inventario.SetActive(false);
             //inventario.SetActive(false);
             //casillaUno.SetActive(true);
@@ -183,6 +196,8 @@ public class CanvasGeneral : MonoBehaviour
         if (estadoJugador.muerto == false)
         {
             Recoleccion nueva = alertar.GetComponent<Recoleccion>();
+            sonidoManager.SeleccionarAudio(4, 0.5f);
+            imagenNegraCasilla.SetActive(true);
             inventario.SetActive(false);
             //inventario.SetActive(false);
             //casillaUno.SetActive(true);
@@ -209,8 +224,12 @@ public class CanvasGeneral : MonoBehaviour
     {
         if (estadoJugador.muerto == false)
         {
+            Fade.Play("FadeOutNivel");
             Recoleccion nueva = alertar.GetComponent<Recoleccion>();
-            inventario.SetActive(false);
+            Invoke("CambioFinal", 1f);
+            sonidoManager.SeleccionarAudio(4, 0.5f);
+            //imagenNegraCasilla.SetActive(true);
+            //inventario.SetActive(false);
             //inventario.SetActive(false);
             //casillaUno.SetActive(true);
             nueva.nuevo5 = false;
@@ -226,17 +245,22 @@ public class CanvasGeneral : MonoBehaviour
         casillas[4].SetActive(true);*/
     }
 
-
+    public void CambioFinal()
+    {
+        SceneManager.LoadScene(3);
+    }
 
     public void BotonCerrarMenuDeInventarioObjetos()
     {
         //inventario.SetActive(false);
         //casillaUno.SetActive(false);
+        sonidoManager.SeleccionarAudio(1, 0.5f);
         casillas[0].SetActive(false);
         casillas[1].SetActive(false);
         casillas[2].SetActive(false);
         casillas[3].SetActive(false);
         casillas[4].SetActive(false);
+        imagenNegraCasilla.SetActive(false);
     }
 
     public void CerrarTodo()
@@ -247,6 +271,7 @@ public class CanvasGeneral : MonoBehaviour
         casillas[2].SetActive(false);
         casillas[3].SetActive(false);
         casillas[4].SetActive(false);
+        imagenNegraCasilla.SetActive(false);
     }
 
     public void ReproduceLasAnimaciones(string nombresAnimaciones)

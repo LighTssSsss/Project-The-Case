@@ -13,6 +13,12 @@ public class Player : MonoBehaviour
     public GameObject estados;
     public Animator animacion;
     public CharacterController charc;
+    private SonidoManager sonidoManager;
+    public bool sonidoMuerto;
+    private void Awake()
+    {
+        sonidoManager = FindObjectOfType<SonidoManager>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -66,7 +72,9 @@ public class Player : MonoBehaviour
 
         if(vidaJugador <= 0)
         {
+            
             ReproduceLaAnimacionMuerte("Standing React Death Forward");
+            //sonidoManager.SeleccionarAudio(8, 0.5f);
             charc.enabled = false;
             gameObject.layer = 13;
         }

@@ -710,6 +710,7 @@ GameObject:
   - component: {fileID: 738208824}
   - component: {fileID: 738208823}
   - component: {fileID: 738208822}
+  - component: {fileID: 738208825}
   m_Layer: 5
   m_Name: Jugar
   m_TagString: Untagged
@@ -832,6 +833,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 738208820}
   m_CullTransparentMesh: 1
+--- !u!114 &738208825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738208820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 854603613}
+          m_TargetAssemblyTypeName: ControladorSonido, Assembly-CSharp
+          m_MethodName: sonidoPresiona
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &854603613 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4263278659209519555, guid: ec07d73bc4597754aa5daa4aacd32c59, type: 3}
+  m_PrefabInstance: {fileID: 4263278660043134622}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a623f25c16141848bcae0fa7fb4a8b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &883109802
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,6 +1000,7 @@ GameObject:
   - component: {fileID: 948721352}
   - component: {fileID: 948721351}
   - component: {fileID: 948721350}
+  - component: {fileID: 948721353}
   m_Layer: 5
   m_Name: Salir
   m_TagString: Untagged
@@ -1081,6 +1123,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948721348}
   m_CullTransparentMesh: 1
+--- !u!114 &948721353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948721348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 854603613}
+          m_TargetAssemblyTypeName: ControladorSonido, Assembly-CSharp
+          m_MethodName: sonidoPresiona
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1255834765
 GameObject:
   m_ObjectHideFlags: 0
@@ -1849,3 +1920,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098427375}
   m_CullTransparentMesh: 1
+--- !u!1001 &4263278660043134622
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4263278659209519552, guid: ec07d73bc4597754aa5daa4aacd32c59, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263278659209519552, guid: ec07d73bc4597754aa5daa4aacd32c59, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1480
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263278659209519552, guid: ec07d73bc4597754aa5daa4aacd32c59, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 720
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263278659209519552, guid: ec07d73bc4597754aa5daa4aacd32c59, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263278659209519552, guid: ec07d73bc4597754aa5daa4aacd32c59, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263278659209519552, guid: ec07d73bc4597754aa5daa4aacd32c59, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263278659209519552, guid: ec07d73bc4597754aa5daa4aacd32c59, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263278659209519552, guid: ec07d73bc4597754aa5daa4aacd32c59, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263278659209519552, guid: ec07d73bc4597754aa5daa4aacd32c59, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263278659209519552, guid: ec07d73bc4597754aa5daa4aacd32c59, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263278659209519552, guid: ec07d73bc4597754aa5daa4aacd32c59, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4263278659209519554, guid: ec07d73bc4597754aa5daa4aacd32c59, type: 3}
+      propertyPath: m_Name
+      value: ControladorDeSonido
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ec07d73bc4597754aa5daa4aacd32c59, type: 3}

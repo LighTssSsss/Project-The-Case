@@ -7,6 +7,15 @@ public class PrenderObjeto : MonoBehaviour
     public bool puedoTomarlo;
     [SerializeField] private GameObject ImagenTomar;
     public GameObject playerEstado;
+
+
+    private SonidoManager sonidoManager;
+
+    private void Awake()
+    {
+        sonidoManager = FindObjectOfType<SonidoManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +25,8 @@ public class PrenderObjeto : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
 
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -28,6 +36,7 @@ public class PrenderObjeto : MonoBehaviour
         if (other.gameObject.tag == "Player" && modPlayer.soyFantasma == false)
         {
             Debug.Log("Prendio el objeto");
+            sonidoManager.SeleccionarAudio(1, 0.9f);
             ImagenTomar.SetActive(true);
             puedoTomarlo = true;
 

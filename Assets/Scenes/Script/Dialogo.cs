@@ -5,8 +5,11 @@ using TMPro;
 
 public class Dialogo : MonoBehaviour
 {
-    [SerializeField] private GameObject dialogos;
+   // [SerializeField] private GameObject dialogos;
     [SerializeField] private TextMeshProUGUI dialogo;
+    [SerializeField] private TextMeshProUGUI nombre;
+    public string nombresDeDialogo;
+    public GameObject jugador;
     public string[] LineasDialogo;
     public float velocidadTexto;
     public int index;
@@ -19,16 +22,30 @@ public class Dialogo : MonoBehaviour
     public GameObject boton1, boton2;
     public List<GameObject> objetosCanvas;
     public bool termino;
+    public Animator animacionCanva,botonNormal;
+    public bool nopuedeMoverse;
+    public GameObject canvaas;
+    public GameObject sonido1, sonido2;
     // Start is called before the first frame update
+
+    private SonidoManager sonidoManager;
+
+    private void Awake()
+    {
+        sonidoManager = FindObjectOfType<SonidoManager>();
+        
+    }
 
     void Start()
     {
-        dialogos.SetActive(false);
+        //dialogos.SetActive(false);
         dialogo.text = string.Empty;
         ComienzaDialogo();
         boton1.SetActive(false);
         boton2.SetActive(false);
-
+        objetosCanvas[6].SetActive(false);
+        sonido1.SetActive(false);
+        sonido2.SetActive(false);
     }
 
     // Update is called once per frame
@@ -85,6 +102,7 @@ public class Dialogo : MonoBehaviour
 
     public void DialogosChica()
     {
+        CanvasGeneral can = canvaas.GetComponent<CanvasGeneral>();
         AreaDisponible dis = GameObject.FindObjectOfType<AreaDisponible>();
 
         ApareceDialogo();
@@ -97,17 +115,37 @@ public class Dialogo : MonoBehaviour
 
         if (dis.disponible == false)
         {
-            dialogos.SetActive(false);
+            can.dialogo.SetActive(false);
+            //dialogos.SetActive(false);
             termino = true;
             //StopAllCoroutines();
+        }
+
+        if(index >= 5)
+        {
+            nombre.text = "Fantasma:";
+        }
+
+        if(index == 12)
+        {
+            sonido1.SetActive(true);
+        }
+
+        if(index != 12)
+        {
+            sonido1.SetActive(false);
         }
 
         if (index == 15)
         {
             ObjetivoDialogo objD = GameObject.FindObjectOfType<ObjetivoDialogo>();
-
+            sonido2.SetActive(true);
             objD.estadoDialogo = true;
 
+        }
+        if (index > 15)
+        {
+            sonido2.SetActive(false);
         }
 
 
@@ -115,7 +153,7 @@ public class Dialogo : MonoBehaviour
         else if (dis.disponible == false && index < 0) //Cuidado
         {
             index = 0;
-            print("Chaoo");
+            
         }
 
         /*
@@ -164,6 +202,7 @@ public class Dialogo : MonoBehaviour
 
     public void siguienteLinea()
     {
+        CanvasGeneral can = canvaas.GetComponent<CanvasGeneral>();
         AreaDisponible dis = GameObject.FindObjectOfType<AreaDisponible>();
         botonContinuar.SetActive(false);
         if (index < LineasDialogo.Length - 1 )
@@ -176,11 +215,16 @@ public class Dialogo : MonoBehaviour
 
         else
         {
-            dialogos.SetActive(false);
-            objetosCanvas[0].SetActive(true);
+            animacionCanva.Play("ObjetoPlayerAparece");
+            botonNormal.Play("BotonNormalAparece");
+            nopuedeMoverse = false;
+            can.dialogo.SetActive(false);
+            //dialogos.SetActive(false);
+
+           /* objetosCanvas[0].SetActive(true);
             objetosCanvas[1].SetActive(true);
             objetosCanvas[2].SetActive(true);
-            objetosCanvas[3].SetActive(true);
+            objetosCanvas[3].SetActive(true);*/
             dis.aparece = false;
             AparecenHabilidades = true;
             termino = true;
@@ -211,22 +255,39 @@ public class Dialogo : MonoBehaviour
         }
     }
 
+    public void ReproduceAnimacionCanva(string nombCanva)
+    {
+        animacionCanva.Play("nombCanva");
+        botonNormal.Play("nombCanva");
+    }
+
     private void OnMouseDown()
     {
+        CanvasGeneral can = canvaas.GetComponent<CanvasGeneral>();
         AreaDisponible dis = GameObject.FindObjectOfType<AreaDisponible>();
-        if (ToqueAlFantasma() && dis.disponible == true)
+        Modos mod = jugador.GetComponent<Modos>();
+        if (ToqueAlFantasma() && dis.disponible == true && mod.soyFantasma == false)
         {
+            //sonidoManager.SeleccionarAudio(2, 0.5f);
+            nombre.text = nombresDeDialogo;
+            animacionCanva.Play("ObjetoPlayerDesaparece");
+            botonNormal.Play("BotonNormalDesaparece");
+            nopuedeMoverse = true;
             hablo = true;
             termino = false;
             dis.aparece = true;
+            /*
             objetosCanvas[0].SetActive(false);
             objetosCanvas[1].SetActive(false);
             objetosCanvas[2].SetActive(false);
-            objetosCanvas[3].SetActive(false);
+            objetosCanvas[3].SetActive(false);*/
             objetosCanvas[4].SetActive(false);
             objetosCanvas[5].SetActive(true);
+            objetosCanvas[6].SetActive(true);
             AparecenHabilidades = false;
-            dialogos.SetActive(true);          
+            can.dialogo.SetActive(true);
+
+           // dialogos.SetActive(true);          
         }
     }
 }

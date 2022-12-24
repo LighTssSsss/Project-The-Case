@@ -7,6 +7,7 @@ public class AreaDisponible : MonoBehaviour
     public bool disponible;
     [SerializeField] private Transform ubicacionObjetoEncima;
     [SerializeField] private GameObject objeto;
+    public GameObject jugadors;
     public bool aparece;
 
     private void Start()
@@ -26,7 +27,8 @@ public class AreaDisponible : MonoBehaviour
     
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        Modos modd = jugadors.GetComponent<Modos>();
+        if (other.gameObject.tag == "Player" && modd.soyFantasma == false)
         {
             disponible = true;
             if(aparece == false)

@@ -21,6 +21,14 @@ public class Recoleccion : MonoBehaviour
     public bool primer, segundo, tercero,cuarto,quinto;
     public bool nuevo1, nuevo2, nuevo3, nuevo4, nuevo5;
     public bool alerta;
+
+    private SonidoManager sonidoManager;
+
+    private void Awake()
+    {
+        sonidoManager = FindObjectOfType<SonidoManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -226,6 +234,7 @@ public class Recoleccion : MonoBehaviour
 
         if (ToqueObjeto1() && estados.soyNormal == true && puedo == true)
         {
+            sonidoManager.SeleccionarAudio(0, 0.5f);
             cantidad[0].SetActive(false);
             primer = true;
             nuevoObjeto = true;
@@ -236,6 +245,7 @@ public class Recoleccion : MonoBehaviour
 
         else if (ToqueObjeto2() && estados.soyNormal == true && puedo2 == true)
         {
+            sonidoManager.SeleccionarAudio(0, 0.5f);
             cantidad[1].SetActive(false);
             segundo = true;
             nuevo2 = true;
@@ -244,6 +254,7 @@ public class Recoleccion : MonoBehaviour
 
         else if (ToqueObjeto3() && estados.soyNormal == true)
         {
+            sonidoManager.SeleccionarAudio(0, 0.5f);
             cantidad[2].SetActive(false);
             tercero = true;
             nuevo3 = true;
@@ -253,6 +264,7 @@ public class Recoleccion : MonoBehaviour
 
         else if (ToqueObjeto4() && estados.soyNormal == true)
         {
+            sonidoManager.SeleccionarAudio(0, 0.5f);
             cantidad[3].SetActive(false);
             cuarto = true;
             nuevo4 = true;
@@ -261,6 +273,7 @@ public class Recoleccion : MonoBehaviour
 
         else if (ToqueObjeto5() && estados.soyNormal == true)
         {
+            sonidoManager.SeleccionarAudio(0, 0.5f);
             cantidad[4].SetActive(false);
             quinto = true;
             nuevo5 = true;
