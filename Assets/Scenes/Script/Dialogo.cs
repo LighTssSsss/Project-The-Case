@@ -26,6 +26,8 @@ public class Dialogo : MonoBehaviour
     public bool nopuedeMoverse;
     public GameObject canvaas;
     public GameObject sonido1, sonido2;
+
+    public Animator vida, inventario, Objetivos;
     // Start is called before the first frame update
 
     private SonidoManager sonidoManager;
@@ -217,6 +219,9 @@ public class Dialogo : MonoBehaviour
         {
             animacionCanva.Play("ObjetoPlayerAparece");
             botonNormal.Play("BotonNormalAparece");
+            vida.Play("BarraAparece");
+            inventario.Play("InventarioApareceCompleto");
+            Objetivos.Play("ObjetivAparece");
             nopuedeMoverse = false;
             can.dialogo.SetActive(false);
             //dialogos.SetActive(false);
@@ -259,6 +264,9 @@ public class Dialogo : MonoBehaviour
     {
         animacionCanva.Play("nombCanva");
         botonNormal.Play("nombCanva");
+        vida.Play(nombCanva);
+        inventario.Play(nombCanva);
+        Objetivos.Play(nombCanva);
     }
 
     private void OnMouseDown()
@@ -271,6 +279,9 @@ public class Dialogo : MonoBehaviour
             //sonidoManager.SeleccionarAudio(2, 0.5f);
             nombre.text = nombresDeDialogo;
             animacionCanva.Play("ObjetoPlayerDesaparece");
+            vida.Play("BarraDesaparece");
+            inventario.Play("InventarioDesapareceCompleto");
+            Objetivos.Play("ObjetivoDesaparece");
             botonNormal.Play("BotonNormalDesaparece");
             nopuedeMoverse = true;
             hablo = true;

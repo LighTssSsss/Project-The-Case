@@ -11,6 +11,7 @@ public class Recoleccion : MonoBehaviour
     [SerializeField] private LayerMask objeto5;
     [SerializeField] private bool nuevoObjeto = false;
     [SerializeField] private List<GameObject> cantidad = new List<GameObject>();
+    public Interaccion tomalo;
     public bool comienzaPuzzle;
 
     public bool puedo,puedo2,puedo3,puedo4;
@@ -274,6 +275,8 @@ public class Recoleccion : MonoBehaviour
         else if (ToqueObjeto5() && estados.soyNormal == true)
         {
             sonidoManager.SeleccionarAudio(0, 0.5f);
+            print("toco");
+            tomalo.puedotomarlo = false;
             cantidad[4].SetActive(false);
             quinto = true;
             nuevo5 = true;

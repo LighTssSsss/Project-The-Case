@@ -13,6 +13,8 @@ public class Modos : MonoBehaviour
     public Transform posicion;
     private SonidoManager sonidoManager;
     public Animator boton,botonNormal;
+
+    public Tutorial botones;
     private void Awake()
     {
         sonidoManager = FindObjectOfType<SonidoManager>();
@@ -48,7 +50,7 @@ public class Modos : MonoBehaviour
         {
             GameObject gameObjects = Instantiate(particulas,posicion.position,Quaternion.identity);
             Destroy(gameObjects, 3f);
-           
+            botones.botonF = true;
             sonidoManager.SeleccionarAudio(5, 0.5f);
             boton.Play("BotonFantasmaNodisponible");
             botonNormal.Play("BotonNormalDisponibles");
@@ -70,6 +72,7 @@ public class Modos : MonoBehaviour
             GameObject gameObjects = Instantiate(particulas, posicion.position, Quaternion.identity);
             Destroy(gameObjects, 3f);
             boton.Play("BotonFantasmaDisponible");
+            botones.botonN = true;
             botonNormal.Play("BotonNormalQuieto");
             // botonNormal.Play("BotonNormalNoDisponible");
             sonidoManager.SeleccionarAudio(5, 0.5f);

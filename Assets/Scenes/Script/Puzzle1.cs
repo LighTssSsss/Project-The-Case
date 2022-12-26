@@ -17,6 +17,7 @@ public class Puzzle1 : MonoBehaviour
     {
         sonido.SetActive(false);
         guardian.SetActive(true);
+       
     }
 
     // Update is called once per frame
@@ -26,6 +27,7 @@ public class Puzzle1 : MonoBehaviour
         {
             sonido.SetActive(true);
             guardian.SetActive(false);
+          
         }
     }
 }

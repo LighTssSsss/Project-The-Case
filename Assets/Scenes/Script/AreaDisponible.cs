@@ -9,7 +9,7 @@ public class AreaDisponible : MonoBehaviour
     [SerializeField] private GameObject objeto,objeto2;
     public GameObject jugadors;
     public bool aparece;
-
+    public Tutorial complete;
     private void Start()
     {
         objeto.SetActive(false);
@@ -30,7 +30,7 @@ public class AreaDisponible : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         Modos modd = jugadors.GetComponent<Modos>();
-        if (other.gameObject.tag == "Player" && modd.soyFantasma == false)
+        if (other.gameObject.tag == "Player" && modd.soyFantasma == false && complete.tutorialCompletado == true)
         {
             disponible = true;
             if(aparece == false)

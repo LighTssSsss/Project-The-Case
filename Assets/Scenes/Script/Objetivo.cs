@@ -9,7 +9,7 @@ public class Objetivo : MonoBehaviour
     public List<string> objetivo = new List<string>();
     public TextMeshProUGUI textoObjetivo;
     public bool estado1, estado2, estado3, estado4, estado5, estado6, estado7;
-    
+    //public bool entroAzul,EntroRoja,ntroNaranja,ntroalaVerde,loCompleto;
     // Update is called once per frame
     void Update()
     {
@@ -18,12 +18,14 @@ public class Objetivo : MonoBehaviour
 
     public void CambioObjetivos()
     {
-        
+       
         if (estado1 == true)
         {
             textoObjetivo.text = objetivo[0];
-            
+
         }
+
+
 
         if (estado2 == true)
         {
@@ -52,7 +54,7 @@ public class Objetivo : MonoBehaviour
 
         if (estado7 == true)
         {
-            textoObjetivo.text = objetivo[60];
+            textoObjetivo.text = objetivo[6];
         }
 
     }

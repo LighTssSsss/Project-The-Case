@@ -14,7 +14,8 @@ public class Interaccion : MonoBehaviour
     [SerializeField] private GameObject[] botones;
     [SerializeField] private GameObject puedo,puedo2,puedo3,puedo4;
     [SerializeField] private GameObject jugador;
-    [SerializeField] private GameObject ApareceDiario;
+    public  GameObject ApareceDiario;
+    public bool puedotomarlo;
     public GameObject cajasonido;
     int[] ValorDado = { -1, -1, -1, -1 }; //Valor dado por el jugador
     int[] ValorEstablecido = { 0, 1, 2, 3}; // Valor Ganador
@@ -25,9 +26,9 @@ public class Interaccion : MonoBehaviour
     [SerializeField] private List<GameObject> Objeto = new List<GameObject>();
 
     [SerializeField] private bool presiono1, presiono2, presiono3, presiono4;
-
+    public GameObject area1, area2;
     private SonidoManager sonidoManager;
-
+    public CanvasGeneral canvCambio;
     private void Awake()
     {
         sonidoManager = FindObjectOfType<SonidoManager>();
@@ -40,6 +41,8 @@ public class Interaccion : MonoBehaviour
         //cajaPuerta.SetActive(true);
         Objeto[0].SetActive(true);
         cajasonido.SetActive(false);
+        area1.SetActive(true);
+        area2.SetActive(false);
     }
     private void Update()
     {
@@ -266,8 +269,14 @@ public class Interaccion : MonoBehaviour
             cajasonido.SetActive(true);
             coger.SetActive(true);
             completado = true;
+            area1.SetActive(false);
             //Objeto[0].SetActive(false);
-            ApareceDiario.SetActive(true);
+           if(prendio1 == true && prendio2 == true && prendio3 == true && prendio4 == true && puedotomarlo == true)
+            {
+                ApareceDiario.SetActive(true);
+                area2.SetActive(true);
+            }
+            
         }
 
         /*
@@ -341,12 +350,14 @@ public class Interaccion : MonoBehaviour
 
         else if (ToqueBoton4() && prenObjet.puedoTomarlo == true && estados.soyFantasma == false)
         {
+            Objetivo obsFinal = GameObject.FindObjectOfType<Objetivo>();
             sonidoManager.SeleccionarAudio(8, 0.5f);
-
+            obsFinal.estado6 = true;
             ValorDado[index] = 3;
             ComprobacionArreglo();
             prendio4 = true;
-            
+            puedotomarlo = true;
+            //canvCambio.cambiamelo = false;
 
         }
 

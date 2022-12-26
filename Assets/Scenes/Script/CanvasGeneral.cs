@@ -18,8 +18,13 @@ public class CanvasGeneral : MonoBehaviour
     public GameObject imagenNegraCasilla;
     private SonidoManager sonidoManager;
     public Animator Fade;
-
     public GameObject unoArea, dosArea, tresArea, cuatroArea;
+
+    public GameObject objetivocambiante, objetivoArea;
+   // public Objetivo1 cambiar;
+    public bool cambiamelo;
+
+    public List<GameObject> areasObjetivo = new List<GameObject>();
     //public Animator pantallaMuerte;
     private void Awake()
     {
@@ -44,6 +49,8 @@ public class CanvasGeneral : MonoBehaviour
         bloqueos[2].SetActive(true);
         imagenNegraCasilla.SetActive(false);
 
+      
+
     }
 
     // Update is called once per frame
@@ -54,6 +61,18 @@ public class CanvasGeneral : MonoBehaviour
         if(estadoJugador.muerto == true)
         {
             pantallaMuerte.SetActive(true);
+        }
+
+        if (cambiamelo == false)
+        {
+            objetivocambiante.SetActive(true);
+            objetivoArea.SetActive(false);
+        }
+
+        else
+        {
+            objetivocambiante.SetActive(false);
+            objetivoArea.SetActive(true);
         }
     }
 
@@ -112,10 +131,12 @@ public class CanvasGeneral : MonoBehaviour
     public void BotonCasillaUno()
     {
         ObjetivoDialogo objs = objetivoDialogos.GetComponent<ObjetivoDialogo>();
-        ObjetivoArea objetivoA = unoArea.GetComponent<ObjetivoArea>();
+       // Objetivo1 objAr = GameObject.FindObjectOfType<Objetivo1>();
+       // ObjetivoArea objetivoA = unoArea.GetComponent<ObjetivoArea>();
         if (estadoJugador.muerto == false)
         {
-            objetivoA.area.SetActive(false);
+            //objetivoA.area.SetActive(false);
+            cambiamelo = false;
             sonidoManager.SeleccionarAudio(4, 0.5f);
             Recoleccion nueva = alertar.GetComponent<Recoleccion>();
             inventario.SetActive(false);
@@ -127,6 +148,7 @@ public class CanvasGeneral : MonoBehaviour
             Objetivo obj = GameObject.FindObjectOfType<Objetivo>();
             obj.estado1 = true;
             bloqueos[0].SetActive(false);
+            areasObjetivo[0].SetActive(false);
         }
         /*
         Recoleccion nueva = alertar.GetComponent<Recoleccion>();
@@ -142,10 +164,11 @@ public class CanvasGeneral : MonoBehaviour
 
     public void BotonCasillaDos()
     {
-        ObjetivoArea objetivoA2 = unoArea.GetComponent<ObjetivoArea>();
+        //ObjetivoArea objetivoA2 = unoArea.GetComponent<ObjetivoArea>();
         if (estadoJugador.muerto == false)
         {
-            objetivoA2.area.SetActive(false);
+            cambiamelo = false;
+            //objetivoA2.area.SetActive(false);
             Recoleccion nueva = alertar.GetComponent<Recoleccion>();
             sonidoManager.SeleccionarAudio(4, 0.5f);
             imagenNegraCasilla.SetActive(true);
@@ -157,6 +180,7 @@ public class CanvasGeneral : MonoBehaviour
             Objetivo obj = GameObject.FindObjectOfType<Objetivo>();
             obj.estado2 = true;
             bloqueos[1].SetActive(false);
+            areasObjetivo[1].SetActive(false);
         }
         /*
         Recoleccion nueva = alertar.GetComponent<Recoleccion>();
@@ -174,6 +198,7 @@ public class CanvasGeneral : MonoBehaviour
     {
         if (estadoJugador.muerto == false)
         {
+            cambiamelo = false;
             Recoleccion nueva = alertar.GetComponent<Recoleccion>();
             sonidoManager.SeleccionarAudio(4, 0.5f);
             imagenNegraCasilla.SetActive(true);
@@ -184,6 +209,7 @@ public class CanvasGeneral : MonoBehaviour
             casillas[2].SetActive(true);
             Objetivo obj = GameObject.FindObjectOfType<Objetivo>();
             obj.estado3 = true;
+            areasObjetivo[2].SetActive(false);
         }
 
         /*
@@ -201,6 +227,7 @@ public class CanvasGeneral : MonoBehaviour
     {
         if (estadoJugador.muerto == false)
         {
+            cambiamelo = false;
             Recoleccion nueva = alertar.GetComponent<Recoleccion>();
             sonidoManager.SeleccionarAudio(4, 0.5f);
             imagenNegraCasilla.SetActive(true);
