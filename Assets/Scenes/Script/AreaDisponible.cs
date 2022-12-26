@@ -6,13 +6,14 @@ public class AreaDisponible : MonoBehaviour
 {
     public bool disponible;
     [SerializeField] private Transform ubicacionObjetoEncima;
-    [SerializeField] private GameObject objeto;
+    [SerializeField] private GameObject objeto,objeto2;
     public GameObject jugadors;
     public bool aparece;
 
     private void Start()
     {
         objeto.SetActive(false);
+        objeto2.SetActive(false);
     }
 
     private void Update()
@@ -20,6 +21,7 @@ public class AreaDisponible : MonoBehaviour
         if(aparece == true)
         {
             objeto.SetActive(false);
+            objeto2.SetActive(false);
         }
     }
 
@@ -34,6 +36,7 @@ public class AreaDisponible : MonoBehaviour
             if(aparece == false)
             {
                 objeto.SetActive(true);
+                objeto2.SetActive(true);
             }
             
         }
@@ -46,6 +49,7 @@ public class AreaDisponible : MonoBehaviour
             disponible = false;
             aparece = false;
             objeto.SetActive(false);
+            objeto2.SetActive(false);
         }
     }
 }

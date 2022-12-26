@@ -15,10 +15,12 @@ public class Interaccion : MonoBehaviour
     [SerializeField] private GameObject puedo,puedo2,puedo3,puedo4;
     [SerializeField] private GameObject jugador;
     [SerializeField] private GameObject ApareceDiario;
-
+    public GameObject cajasonido;
     int[] ValorDado = { -1, -1, -1, -1 }; //Valor dado por el jugador
     int[] ValorEstablecido = { 0, 1, 2, 3}; // Valor Ganador
     int index = 0;
+    public Animator caja;
+    public GameObject coger;
 
     [SerializeField] private List<GameObject> Objeto = new List<GameObject>();
 
@@ -33,10 +35,11 @@ public class Interaccion : MonoBehaviour
 
     private void Start()
     {
+        coger.SetActive(false);
         ApareceDiario.SetActive(false);
         //cajaPuerta.SetActive(true);
         Objeto[0].SetActive(true);
-       
+        cajasonido.SetActive(false);
     }
     private void Update()
     {
@@ -122,7 +125,7 @@ public class Interaccion : MonoBehaviour
             if (prenOb.puedoTomarlo == true && estados.soyFantasma == false)
             {
                 hit.collider.gameObject.GetComponent<Botones>().EncenderLuz(true);
-                Debug.Log("Luz" + hit.collider.gameObject.name);
+               // Debug.Log("Luz" + hit.collider.gameObject.name);
             }
                 
         }
@@ -144,7 +147,7 @@ public class Interaccion : MonoBehaviour
             if (prenObj.puedoTomarlo == true && estados.soyFantasma == false)
             {
                 hit.collider.gameObject.GetComponent<Botones>().EncenderLuz(true);
-                Debug.Log("Luz" + hit.collider.gameObject.name);
+               // Debug.Log("Luz" + hit.collider.gameObject.name);
             }
                 
         }
@@ -166,7 +169,7 @@ public class Interaccion : MonoBehaviour
             if (prenObje.puedoTomarlo == true && estados.soyFantasma == false)
             {
                 hit.collider.gameObject.GetComponent<Botones>().EncenderLuz(true);
-                Debug.Log("Luz" + hit.collider.gameObject.name);
+               // Debug.Log("Luz" + hit.collider.gameObject.name);
             }
             
         }
@@ -188,7 +191,7 @@ public class Interaccion : MonoBehaviour
             if (prenObjet.puedoTomarlo == true && estados.soyFantasma == false)
             {
                 hit.collider.gameObject.GetComponent<Botones>().EncenderLuz(true);
-                Debug.Log("Luz" + hit.collider.gameObject.name);
+                //Debug.Log("Luz" + hit.collider.gameObject.name);
             }
             
         }
@@ -200,7 +203,7 @@ public class Interaccion : MonoBehaviour
     {
         if(ValorDado[index] == ValorEstablecido[index])
         {
-            print("valor igual");
+           
 
             if (index < 3)
             {
@@ -230,7 +233,7 @@ public class Interaccion : MonoBehaviour
                 presiono3 = false;
                 presiono4 = false;
                 index = 0;
-                print("No es igual");
+               
             }
             //Botones ga = ga.GetComponent<Botones>().EncenderLuz(false);
             /*
@@ -259,8 +262,11 @@ public class Interaccion : MonoBehaviour
         
         if(prendio1 == true && prendio2 == true && prendio3 == true && prendio4 == true)
         {
+            caja.Play("CajaFuerteAbriendose");
+            cajasonido.SetActive(true);
+            coger.SetActive(true);
             completado = true;
-            Objeto[0].SetActive(false);
+            //Objeto[0].SetActive(false);
             ApareceDiario.SetActive(true);
         }
 
@@ -269,6 +275,11 @@ public class Interaccion : MonoBehaviour
         {
             Objeto[0].SetActive(false);
         } */
+    }
+
+    public void ReproducemeAnimacion(string nombres)
+    {
+        caja.Play(nombres);
     }
 
     public void ApagarLuces()
@@ -304,7 +315,7 @@ public class Interaccion : MonoBehaviour
                 presiono3 = false;
                 presiono4 = false;
             }
-            print("Boton 1 se presiono");
+           
             presiono1 = true;
         }
 
@@ -314,7 +325,7 @@ public class Interaccion : MonoBehaviour
             ValorDado[index] = 1;
             ComprobacionArreglo();
             prendio2 = true;
-            print("Boton 2 se presiono");
+           
             presiono2 = true;
         }
 
@@ -324,7 +335,7 @@ public class Interaccion : MonoBehaviour
             ValorDado[index] = 2;
             ComprobacionArreglo();
             prendio3 = true;
-            print("Boton 3 se presiono");
+          
             presiono3 = true; //ver esto;
         }
 
@@ -335,7 +346,7 @@ public class Interaccion : MonoBehaviour
             ValorDado[index] = 3;
             ComprobacionArreglo();
             prendio4 = true;
-            print("Boton 4 se presiono");
+            
 
         }
 

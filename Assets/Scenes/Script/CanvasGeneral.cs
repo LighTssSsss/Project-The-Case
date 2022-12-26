@@ -18,6 +18,8 @@ public class CanvasGeneral : MonoBehaviour
     public GameObject imagenNegraCasilla;
     private SonidoManager sonidoManager;
     public Animator Fade;
+
+    public GameObject unoArea, dosArea, tresArea, cuatroArea;
     //public Animator pantallaMuerte;
     private void Awake()
     {
@@ -110,8 +112,10 @@ public class CanvasGeneral : MonoBehaviour
     public void BotonCasillaUno()
     {
         ObjetivoDialogo objs = objetivoDialogos.GetComponent<ObjetivoDialogo>();
+        ObjetivoArea objetivoA = unoArea.GetComponent<ObjetivoArea>();
         if (estadoJugador.muerto == false)
         {
+            objetivoA.area.SetActive(false);
             sonidoManager.SeleccionarAudio(4, 0.5f);
             Recoleccion nueva = alertar.GetComponent<Recoleccion>();
             inventario.SetActive(false);
@@ -138,8 +142,10 @@ public class CanvasGeneral : MonoBehaviour
 
     public void BotonCasillaDos()
     {
+        ObjetivoArea objetivoA2 = unoArea.GetComponent<ObjetivoArea>();
         if (estadoJugador.muerto == false)
         {
+            objetivoA2.area.SetActive(false);
             Recoleccion nueva = alertar.GetComponent<Recoleccion>();
             sonidoManager.SeleccionarAudio(4, 0.5f);
             imagenNegraCasilla.SetActive(true);
@@ -295,7 +301,7 @@ public class CanvasGeneral : MonoBehaviour
 
     public void RecargaEscena()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
     public void VuelveAlMenu()
     {

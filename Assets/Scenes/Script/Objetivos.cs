@@ -9,11 +9,13 @@ public class Objetivos : MonoBehaviour
     public TextMeshProUGUI textoObjetivo;
     public bool estado1, estado2, estado3,estado4,estado5,estado6,estado7;
     public GameObject area;
+    
 
 
     private void Update()
     {
         CambioObjetivos();
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,6 +24,7 @@ public class Objetivos : MonoBehaviour
         {
             textoObjetivo.text = objetivo;
             area.SetActive(false);
+           
         }
     }
 

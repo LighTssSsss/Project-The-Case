@@ -7,6 +7,8 @@ public class Inventario : MonoBehaviour
 
     [SerializeField] private List<GameObject> objetoInventario = new List<GameObject>();
      public List<GameObject> nuevoObjetoAparecio = new List<GameObject>();
+    public List<GameObject> nuevoObjetivoArea = new List<GameObject>();
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +16,7 @@ public class Inventario : MonoBehaviour
         objetoInventario[1].SetActive(false);
         objetoInventario[2].SetActive(false);
         objetoInventario[3].SetActive(false);
-        //objetoInventario[4].SetActive(false);
+        objetoInventario[4].SetActive(false);
 
         nuevoObjetoAparecio[0].SetActive(false);
         nuevoObjetoAparecio[1].SetActive(false);
@@ -34,8 +36,8 @@ public class Inventario : MonoBehaviour
     public void ObjetoInventario()
     {
         Recoleccion reco = GameObject.FindObjectOfType<Recoleccion>();
-
-        if(reco.primer == true)
+        
+        if (reco.primer == true)
         {
             objetoInventario[0].SetActive(true);
             nuevoObjetoAparecio[0].SetActive(true);

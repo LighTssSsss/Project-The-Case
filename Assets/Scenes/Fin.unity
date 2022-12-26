@@ -216,7 +216,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 752870154}
-  - component: {fileID: 752870153}
+  - component: {fileID: 752870155}
   m_Layer: 0
   m_Name: Fin
   m_TagString: Untagged
@@ -224,21 +224,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &752870153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 752870152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e3343df0367a3848975f0d00d6df25c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeVideo: {fileID: 1797395410}
-  video: {fileID: 1797395409}
-  tiempo: 0
 --- !u!4 &752870154
 Transform:
   m_ObjectHideFlags: 0
@@ -254,6 +239,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &752870155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752870152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91582c7717f57e0498e89cdf47941f00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeVideo: {fileID: 1797395410}
+  video: {fileID: 1797395409}
+  tiempo: 0
 --- !u!1 &1752615718
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,6 +443,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1300406912216812309, guid: f478e3d0b4201bd46b1244914a6e453e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300406912216812311, guid: f478e3d0b4201bd46b1244914a6e453e, type: 3}
+      propertyPath: m_VideoClip
+      value: 
+      objectReference: {fileID: 32900000, guid: 8d1ff63abc1528849832da62113edf9a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f478e3d0b4201bd46b1244914a6e453e, type: 3}
 --- !u!1 &1797395409 stripped

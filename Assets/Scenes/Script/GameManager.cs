@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     public GameObject cajaPuzzle;
     public bool muerto;
     public CanvasGeneral cG;
-
+    public GameObject sonidoGameOver;
+    public GameObject musica;
     private void Awake()
     {
         Application.targetFrameRate = 60;
@@ -17,7 +18,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        sonidoGameOver.SetActive(false);
+        musica.SetActive(true);
     }
 
     // Update is called once per frame
@@ -48,7 +50,16 @@ public class GameManager : MonoBehaviour
             cG.CerrarTodo();
            
         }
+        GameOver();
     }
 
-    
+    public void GameOver()
+    {
+        Player jugador = jugadors.GetComponent<Player>();
+        if (jugador.vidaJugador <= 0)
+        {
+            sonidoGameOver.SetActive(true);
+            musica.SetActive(false);
+        }
+    }
 }
