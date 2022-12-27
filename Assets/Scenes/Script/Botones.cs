@@ -6,7 +6,7 @@ public class Botones : MonoBehaviour
 {
     [SerializeField] private Light luz;
     [SerializeField] private bool encendida;
-    [SerializeField] private bool apagado;
+    //[SerializeField] private bool apagado;
 
 
     private void Start()

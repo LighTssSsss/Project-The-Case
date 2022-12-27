@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
             tiempo += Time.deltaTime;
             if(tiempo >= 2)
             {
-                vidaJugador -= 20;
+                vidaJugador -= 10;
                 tiempo = 0;
             }
             

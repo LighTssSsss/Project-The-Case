@@ -46,7 +46,7 @@ public class Objetivo : MonoBehaviour
         {
             textoObjetivo.text = objetivo[4];
         }
-
+        /*
         if (estado6 == true)
         {
             textoObjetivo.text = objetivo[5];
@@ -55,7 +55,7 @@ public class Objetivo : MonoBehaviour
         if (estado7 == true)
         {
             textoObjetivo.text = objetivo[6];
-        }
+        }*/
 
     }
 }

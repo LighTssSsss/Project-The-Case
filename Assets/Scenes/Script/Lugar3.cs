@@ -14,7 +14,7 @@ public class Lugar3 : MonoBehaviour
     {
         if (other.gameObject.tag == "Objeto3")
         {
-            sonidoManager.SeleccionarAudio(11, 0.9f);
+            sonidoManager.SeleccionarAudio(11, 1f);
             Puzzle1 puz = GameObject.FindObjectOfType<Puzzle1>();
             puz.lugar3 = true;
         }

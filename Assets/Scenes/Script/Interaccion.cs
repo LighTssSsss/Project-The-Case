@@ -125,6 +125,7 @@ public class Interaccion : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, Boton1))
         {
             prendio = true;
+
             if (prenOb.puedoTomarlo == true && estados.soyFantasma == false)
             {
                 hit.collider.gameObject.GetComponent<Botones>().EncenderLuz(true);
@@ -147,6 +148,7 @@ public class Interaccion : MonoBehaviour
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, Boton2))
         {
             prendio2 = true;
+
             if (prenObj.puedoTomarlo == true && estados.soyFantasma == false)
             {
                 hit.collider.gameObject.GetComponent<Botones>().EncenderLuz(true);
@@ -221,7 +223,7 @@ public class Interaccion : MonoBehaviour
             if(completado == false)
             {
                 ApagarLuces();
-                sonidoManager.SeleccionarAudio(9, 0.5f);
+                sonidoManager.SeleccionarAudio(9, 0.3f);
                 ValorDado[0] = -1;
                 ValorDado[1] = -1;
                 ValorDado[2] = -1;
@@ -271,6 +273,7 @@ public class Interaccion : MonoBehaviour
             completado = true;
             area1.SetActive(false);
             //Objeto[0].SetActive(false);
+
            if(prendio1 == true && prendio2 == true && prendio3 == true && prendio4 == true && puedotomarlo == true)
             {
                 ApareceDiario.SetActive(true);
@@ -316,6 +319,7 @@ public class Interaccion : MonoBehaviour
             ComprobacionArreglo();
             //Botones bo = GameObject.Find
             prendio1 = true;
+            
             if (prendio1 == true && prendio2 == false || prendio3 == true || prendio4 == true)
             {
                 prendio3 = false;

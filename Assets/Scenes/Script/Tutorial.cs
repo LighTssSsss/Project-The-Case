@@ -10,8 +10,13 @@ public class Tutorial : MonoBehaviour
     public Animator parte1, parte2,parte3,parte4;
     public GameObject bloqueo;
     public bool tutorialCompletado;
-   // public Animator an, ann, annn, anni;
+    // public Animator an, ann, annn, anni;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
     void Start()
     {
         parte1Desactivada = true;

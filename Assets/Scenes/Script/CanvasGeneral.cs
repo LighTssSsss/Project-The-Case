@@ -19,7 +19,7 @@ public class CanvasGeneral : MonoBehaviour
     private SonidoManager sonidoManager;
     public Animator Fade;
     public GameObject unoArea, dosArea, tresArea, cuatroArea;
-
+    public GameObject bloqueo;
     public GameObject objetivocambiante, objetivoArea;
    // public Objetivo1 cambiar;
     public bool cambiamelo;
@@ -48,7 +48,7 @@ public class CanvasGeneral : MonoBehaviour
         bloqueos[1].SetActive(true);
         bloqueos[2].SetActive(true);
         imagenNegraCasilla.SetActive(false);
-
+        bloqueo.SetActive(false);
       
 
     }
@@ -95,6 +95,7 @@ public class CanvasGeneral : MonoBehaviour
     {
         if (estadoJugador.muerto == false)
         {
+            bloqueo.SetActive(true);
             sonidoManager.SeleccionarAudio(3, 0.5f);
             Recoleccion alert = alertar.GetComponent<Recoleccion>();
             /* apaga
@@ -125,6 +126,7 @@ public class CanvasGeneral : MonoBehaviour
     {
         sonidoManager.SeleccionarAudio(1, 0.5f);
         inventario.SetActive(false);
+        bloqueo.SetActive(false);
     }
 
     
@@ -294,6 +296,7 @@ public class CanvasGeneral : MonoBehaviour
         casillas[3].SetActive(false);
         casillas[4].SetActive(false);
         imagenNegraCasilla.SetActive(false);
+        bloqueo.SetActive(false);
     }
 
     public void CerrarTodo()
@@ -305,6 +308,7 @@ public class CanvasGeneral : MonoBehaviour
         casillas[3].SetActive(false);
         casillas[4].SetActive(false);
         imagenNegraCasilla.SetActive(false);
+        bloqueo.SetActive(false);
     }
 
     public void ReproduceLasAnimaciones(string nombresAnimaciones)
